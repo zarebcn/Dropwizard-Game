@@ -1,5 +1,6 @@
 package com.zarebcn.dropwizardgames;
 
+import com.zarebcn.dropwizardgames.resources.GamesResources;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -21,9 +22,12 @@ public class GamesApplication extends Application<GamesConfiguration> {
     }
 
     @Override
-    public void run(GamesConfiguration configuration,
-                    Environment environment) {
-        // nothing to do yet
+    public void run(GamesConfiguration configuration, Environment environment) {
+
+        GamesResources gamesResources = new GamesResources();
+
+        //tell dropwizard to setup my resource
+        environment.jersey().register(gamesResources);
     }
 }
 
