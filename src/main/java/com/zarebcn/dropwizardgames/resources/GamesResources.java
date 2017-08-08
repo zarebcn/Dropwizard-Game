@@ -20,6 +20,7 @@ public class GamesResources {
     public GamesResources() {
 
         games = new ArrayList<>();
+
         games.add(new Game("Bioshock", "2K Games", "FPS", 1));
         games.add(new Game("Alien Isolation", "CA Games", "Survival Horror", 2));
         games.add(new Game("PES 2018", "Konami", "Sport", 3));
