@@ -32,7 +32,7 @@ public class GamesResources {
         games.add(new Game("Thimbleweed Park", "Terrible Toybox", "Adventure", 9));
         games.add(new Game("Fallout 4", "Bethesda", "RPG", 10));
         games.add(new Game("Call of Duty 4 Modern Warfare Remastered", "Raven Software", "FPS", 11));
-        games.add(new Game("Wolfenstein 2 The new Colossus", "MachineGames", "FPS", 12));
+        games.add(new Game("Wolfenstein 2 The New Colossus", "MachineGames", "FPS", 12));
 
     }
 
@@ -43,9 +43,9 @@ public class GamesResources {
         String html = "<h1>Recommended Games</h1>";
         html += "<ul>";
 
-        for (Game game : games) {
-            int id = game.getId();
-            html += "<li><a href='/games/" + id + "'>" + game.getTitle() + "</a></li>";
+        for (int i = 0; i < games.size(); i++) {
+
+           html += generarHtml(games, i);
         }
         html += "</ul>";
 
@@ -92,13 +92,11 @@ public class GamesResources {
 
         if (gamesFiltered.size() > 0) {
 
-            for (int in = 0; in < gamesFiltered.size(); in++) {
+            for (int i = 0; i < gamesFiltered.size(); i++) {
 
-                Game game = gamesFiltered.get(in);
-                int id = game.getId();
-                html += "<li><a href='/games/" + id + "'>" + game.getTitle() + "</a></li>";
+               html += generarHtml(gamesFiltered, i);
 
-                if (in == gamesFiltered.size() - 1) {
+                if (i == gamesFiltered.size() - 1) {
 
                     html += "</ul>";
                 }
@@ -109,5 +107,13 @@ public class GamesResources {
         }
 
         return html;
+    }
+
+    private String generarHtml(List<Game> lista, int indice) {
+
+        Game game = lista.get(indice);
+        int id = game.getId();
+
+        return "<li><a href='/games/" + id + "'>" + game.getTitle() + "</a></li>";
     }
 }
