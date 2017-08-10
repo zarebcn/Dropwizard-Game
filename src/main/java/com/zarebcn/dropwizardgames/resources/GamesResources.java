@@ -2,14 +2,18 @@ package com.zarebcn.dropwizardgames.resources;
 
 
 import com.zarebcn.dropwizardgames.model.Game;
+import com.zarebcn.dropwizardgames.util.MustacheUtil;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Path("/games")
 @Produces(MediaType.TEXT_HTML)
@@ -38,9 +42,9 @@ public class GamesResources {
 
 
     @GET
-    public String viewGames() {
+    public String viewGames() throws IOException {
 
-        String html = "<h1>Recommended Games</h1>";
+       /* String html = "<h1>Recommended Games</h1>";
         html += "<ul>";
 
         for (int i = 0; i < games.size(); i++) {
@@ -49,17 +53,29 @@ public class GamesResources {
         }
         html += "</ul>";
 
-        return html;
+        return html;*/
+
+       return MustacheUtil.processTemplate("games.html", games);
+
     }
 
     @GET
     @Path("{id}")
-    public String viewGame(@PathParam("id") int gameId) {
+    public String viewGame(@PathParam("id") int gameId) throws IOException {
 
         Game game = games.get(gameId - 1);
 
         if (game != null) {
-            return "<h1>" + game.getTitle() + "</h1>" + "<h2>" + game.getDeveloper() + "</h2>";
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("title", game.getTitle());
+            map.put("developer", game.getDeveloper());
+            map.put("genre", game.getGenre());
+
+            return MustacheUtil.processTemplate("game.html", map);
+
+            //return "<h1>" + game.getTitle() + "</h1>" + "<h2>" + game.getDeveloper() + "</h2>";
+
         } else {
             return "Game not found";
         }
