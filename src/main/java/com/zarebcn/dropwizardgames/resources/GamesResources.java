@@ -2,7 +2,9 @@ package com.zarebcn.dropwizardgames.resources;
 
 
 import com.zarebcn.dropwizardgames.model.Game;
-import com.zarebcn.dropwizardgames.util.MustacheUtil;
+import com.zarebcn.webapputils.util.MustacheUtil;
+//import com.zarebcn.dropwizardgames.util.MustacheUtil;
+
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
