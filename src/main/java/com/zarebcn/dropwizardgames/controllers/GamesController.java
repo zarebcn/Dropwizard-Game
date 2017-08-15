@@ -1,4 +1,4 @@
-package com.zarebcn.dropwizardgames.resources;
+package com.zarebcn.dropwizardgames.controllers;
 
 
 import com.zarebcn.dropwizardgames.model.Game;
@@ -19,11 +19,11 @@ import java.util.Map;
 
 @Path("/games")
 @Produces(MediaType.TEXT_HTML)
-public class GamesResources {
+public class GamesController {
 
     private List<Game> games;
 
-    public GamesResources() {
+    public GamesController() {
 
         games = new ArrayList<>();
 
@@ -65,9 +65,11 @@ public class GamesResources {
     @Path("{id}")
     public String viewGame(@PathParam("id") int gameId) throws IOException {
 
-        Game game = games.get(gameId - 1);
 
-        if (game != null) {
+
+        if (gameId > 0 && gameId <= games.size()) {
+
+            Game game = games.get(gameId - 1);
 
             Map<String, Object> map = new HashMap<>();
             map.put("title", game.getTitle());
@@ -91,10 +93,10 @@ public class GamesResources {
 
     @GET
     @Path("/search/{genre}")
-    public String filterByGenre(@PathParam("genre") String genre) {
+    public String filterByGenre(@PathParam("genre") String genre) throws IOException {
 
-        String html = "<h1>Games found by " + genre + " filter</h1>";
-        html += "<ul>";
+       // String html = "<h1>Games found by " + genre + " filter</h1>";
+       // html += "<ul>";
         List<Game> gamesFiltered = new ArrayList<>();
 
 
@@ -110,7 +112,7 @@ public class GamesResources {
 
         if (gamesFiltered.size() > 0) {
 
-            for (int i = 0; i < gamesFiltered.size(); i++) {
+           /* for (int i = 0; i < gamesFiltered.size(); i++) {
 
                html += generarHtml(gamesFiltered, i);
 
@@ -118,13 +120,16 @@ public class GamesResources {
 
                     html += "</ul>";
                 }
-            }
+            }*/
+
+            return MustacheUtil.processTemplate("filteredgames.html", gamesFiltered);
+
         } else {
 
-            html = "<h1>No games found by " + "'" + genre + "'" + " filter</h1>";
+            return "<h1>No games found by " + "'" + genre + "'" + " filter</h1>";
         }
 
-        return html;
+        //return html;
     }
 
     private String generarHtml(List<Game> lista, int indice) {

@@ -1,7 +1,8 @@
 package com.zarebcn.dropwizardgames;
 
-import com.zarebcn.dropwizardgames.resources.GamesResources;
+import com.zarebcn.dropwizardgames.controllers.GamesController;
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -18,16 +19,17 @@ public class GamesApplication extends Application<GamesConfiguration> {
 
     @Override
     public void initialize(Bootstrap<GamesConfiguration> bootstrap) {
-        // nothing to do yet
+
+        bootstrap.addBundle(new AssetsBundle("/assets/", "/assets/"));
     }
 
     @Override
     public void run(GamesConfiguration configuration, Environment environment) {
 
-        GamesResources gamesResources = new GamesResources();
+        GamesController gamesController = new GamesController();
 
         //tell dropwizard to setup my resource
-        environment.jersey().register(gamesResources);
+        environment.jersey().register(gamesController);
     }
 }
 
