@@ -4,13 +4,21 @@
 </head>
 <body>
 
-<div class="botonhome">
-    <button>Home</button>
+<div class="boton">
+    <button class="home">Home</button>
+    <input placeholder="search..." type="text">
+    <button class="search">Search</button>
 </div>
 
-<h1>{{title}}</h1>
-<h2>{{developer}}</h2>
-<h3>{{genre}}</h3>
+<h2>{{title}}</h2>
+<h3>{{developer}}</h3>
+<img class="portada" src="{{cover}}">
+
+<div class="metacritic">
+<img class="icon" src="http://static.metacritic.com/images/icons/mc_fb_og.png">
+<p class="texto">metacritic score :</p>
+<p class="score">{{score}}%</p>
+</div>
 
 <script src="/assets/main.js"></script>
 

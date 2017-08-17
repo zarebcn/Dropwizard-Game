@@ -4,11 +4,11 @@ homeButton();
 
 function searchButton() {
 
-    var search = document.querySelector(".botonbuscar button");
+    var search = document.querySelector(".boton .search");
 
     search.onclick = function() {
 
-        var input = document.querySelector(".botonbuscar input");
+        var input = document.querySelector(".boton input");
         var filtro = input.value;
         location.href = '/games?search=' + filtro;
     };
@@ -16,9 +16,9 @@ function searchButton() {
 
 function homeButton () {
 
-    var home = document.querySelector(".botonhome button");
+    var home = document.querySelector(".boton .home");
 
-    home.onclick = function () {
+    home.onclick = function() {
 
         location.href = '/games';
     }

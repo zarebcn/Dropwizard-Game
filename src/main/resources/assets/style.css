@@ -2,22 +2,50 @@ a {
     font-weight: bolder;
     text-decoration: none;
     color: blue;
+    font-size: 18px;
 }
 
-.botonbuscar {
+body {
     display: flex;
-    flex-direction: row;
-}
-
-.botonhome {
-    display: flex;
-    flex-direction: row;
-}
-
-.main {
-    display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+}
+
+.portada {
+    height: 450px;
+    width: 400px;
+}
+
+.metacritic {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.icon {
+    margin-top: 12px;
+    height: 30px;
+    width: 30px;
+}
+
+.texto {
+    font-size: 17px;
+    font-weight: bolder;
+    margin-left: 4px;
+    margin-bottom: 0px;
+}
+
+.score {
+    margin-left: 8px;
+    font-weight: bolder;
+    font-size: 30px;
+    margin-top: 11px;
+    margin-bottom: 0px;
+    color: green;
+}
+
+h3 {
+    margin-top: 10px;
 }
 
 ul {

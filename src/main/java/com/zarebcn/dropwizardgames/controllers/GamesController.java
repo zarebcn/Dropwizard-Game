@@ -24,18 +24,18 @@ public class GamesController {
 
         games = new ArrayList<>();
 
-        games.add(new Game("Bioshock", "2K Games", "FPS", 1));
-        games.add(new Game("Alien Isolation", "CA Games", "Survival Horror", 2));
-        games.add(new Game("PES 2018", "Konami", "Sport", 3));
-        games.add(new Game("Skyrim", "Bethesda", "RPG", 4));
-        games.add(new Game("The Witcher 3", "CD Projekt RED", "RPG", 5));
-        games.add(new Game("Half Life 2", "Valve", "FPS", 6));
-        games.add(new Game("Resident Evil 7", "Capcom", "Survival Horror", 7));
-        games.add(new Game("NBA 2K18", "2K Games", "Sport", 8));
-        games.add(new Game("Thimbleweed Park", "Terrible Toybox", "Adventure", 9));
-        games.add(new Game("Fallout 4", "Bethesda", "RPG", 10));
-        games.add(new Game("Call of Duty 4 Modern Warfare Remastered", "Raven Software", "FPS", 11));
-        games.add(new Game("Wolfenstein 2 The New Colossus", "MachineGames", "FPS", 12));
+        games.add(new Game(96, "Bioshock", "2K Games", "FPS", 1, "https://vignette3.wikia.nocookie.net/bioshock/images/8/8e/BioShock_box.png/revision/latest?cb=20100425082949"));
+        games.add(new Game(81, "Alien Isolation", "CA Games", "Survival Horror", 2, "http://www.gamedynamo.com/images/games/boxart/high/4513.jpg"));
+        games.add(new Game(85, "PES 2017", "Konami", "Sport", 3, "http://www.mobygames.com/images/covers/l/365348-pes-2017-pro-evolution-soccer-playstation-4-front-cover.jpg"));
+        games.add(new Game(94, "TES V Skyrim", "Bethesda", "RPG", 4, "https://i.ytimg.com/vi/AeGpJgt_KiA/maxresdefault.jpg"));
+        games.add(new Game(93, "The Witcher 3", "CD Projekt RED", "RPG", 5, "http://i.imgur.com/DVZUGpO.jpg"));
+        games.add(new Game(95, "Metal Gear Solid V The Phantom Pain", "Konami", "FPS", 6, "https://static.giantbomb.com/uploads/original/8/86603/2644272-scarf.jpg"));
+        games.add(new Game(86, "Resident Evil 7", "Capcom", "Survival Horror", 7, "http://www.heypoorplayer.com/wp-content/uploads/2017/01/Resident-Evil-7-Art.jpg"));
+        games.add(new Game(90, "NBA 2K17", "2K Games", "Sport", 8, "http://media.operationsports.com/shots/1470398834-media.jpg"));
+        games.add(new Game(85, "Thimbleweed Park", "Terrible Toybox", "Adventure", 9, "http://gamepod.vg/wp-content/uploads/2017/03/ThimbleweedParkCover.jpg"));
+        games.add(new Game(88, "Fallout 4", "Bethesda", "RPG", 10, "https://vignette3.wikia.nocookie.net/fallout/images/e/e9/Fallout_4_box_cover.jpg/revision/latest?cb=20170220211249"));
+        games.add(new Game(89, "Call of Duty 4 Modern Warfare Remastered", "Raven Software", "FPS", 11, "http://vignette3.wikia.nocookie.net/callofduty/images/e/ec/Cod-mw-remastered-cover_v2.jpeg/revision/latest?cb=20160502190153"));
+        games.add(new Game(81, "Wolfenstein The New Order", "MachineGames", "FPS", 12, "https://gamefaqs.akamaized.net/box/2/3/5/396235_front.jpg"));
 
     }
 
@@ -87,7 +87,8 @@ public class GamesController {
             Map<String, Object> map = new HashMap<>();
             map.put("title", game.getTitle());
             map.put("developer", game.getDeveloper());
-            map.put("genre", game.getGenre());
+            map.put("cover", game.getPortada());
+            map.put("score", game.getScore());
 
             return MustacheUtil.processTemplate("game.html", map);
 

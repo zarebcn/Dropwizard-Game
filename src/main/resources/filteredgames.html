@@ -4,11 +4,11 @@
 </head>
 <body>
 
-<div class="botonhome">
-    <button>Home</button>
+<div class="boton">
+    <button class="home">Home</button>
+    <input placeholder="search..." type="text">
+    <button class="search">Search</button>
 </div>
-
-<a href='/games'>Home</a>
 
 <h1>Games found by selected filter</h1>
 <ul>
@@ -16,7 +16,6 @@
     <li><a href='/games/{{id}}'>{{title}}</a></li>
     {{/.}}
 </ul>
-
 
 <script src="/assets/main.js"></script>
 
