@@ -6,10 +6,7 @@ import com.zarebcn.webapputils.util.MustacheUtil;
 //import com.zarebcn.dropwizardgames.util.MustacheUtil;
 
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,22 +41,39 @@ public class GamesController {
 
 
     @GET
-    public String viewGames() throws IOException {
+    public String viewGames(@QueryParam("search") String genre) throws IOException {
 
-       /* String html = "<h1>Recommended Games</h1>";
-        html += "<ul>";
 
-        for (int i = 0; i < games.size(); i++) {
+        List<Game> gamesFiltered = new ArrayList<>();
 
-           html += generarHtml(games, i);
+        if (genre != null) {
+
+            for (int i = 0; i < games.size(); i++) {
+
+                Game game = games.get(i);
+
+                if (genre != null && game.getGenre().toLowerCase().equals(genre.toLowerCase())) {
+
+                    gamesFiltered.add(game);
+                }
+            }
+
+            if (gamesFiltered.size() > 0) {
+
+                return MustacheUtil.processTemplate("filteredgames.html", gamesFiltered);
+
+            } else {
+
+                return MustacheUtil.processTemplate("games.html", games);
+                //return "<h1>No games found by " + "'" + genre + "'" + " filter</h1>";
+            }
+
+        } else {
+
+            return MustacheUtil.processTemplate("games.html", games);
         }
-        html += "</ul>";
-
-        return html;*/
-
-       return MustacheUtil.processTemplate("games.html", games);
-
     }
+
 
     @GET
     @Path("{id}")
