@@ -1,5 +1,6 @@
 
 searchButton();
+homeButton();
 
 function searchButton() {
 
@@ -17,5 +18,8 @@ function homeButton () {
 
     var home = document.querySelector(".botonhome button");
 
-    home.onclick = location.href = '/games';
+    home.onclick = function () {
+
+        location.href = '/games';
+    }
 }
