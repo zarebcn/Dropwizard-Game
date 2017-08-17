@@ -43,7 +43,6 @@ public class GamesController {
     @GET
     public String viewGames(@QueryParam("search") String genre) throws IOException {
 
-
         List<Game> gamesFiltered = new ArrayList<>();
 
         if (genre != null) {

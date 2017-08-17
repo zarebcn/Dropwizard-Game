@@ -4,9 +4,19 @@ a {
     color: blue;
 }
 
-body {
+.botonbuscar {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+.botonhome {
+    display: flex;
+    flex-direction: row;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
 
