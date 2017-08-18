@@ -19,10 +19,12 @@ import java.util.Map;
 public class GamesController {
 
     private List<Game> games;
+    private Map<Integer, Game> games2;
 
     public GamesController() {
 
         games = new ArrayList<>();
+        games2 = new HashMap<>();
 
         games.add(new Game(96, "Bioshock", "2K Games", "FPS", 1, "https://vignette3.wikia.nocookie.net/bioshock/images/8/8e/BioShock_box.png/revision/latest?cb=20100425082949"));
         games.add(new Game(81, "Alien Isolation", "CA Games", "Survival Horror", 2, "http://www.gamedynamo.com/images/games/boxart/high/4513.jpg"));
@@ -37,6 +39,19 @@ public class GamesController {
         games.add(new Game(89, "Call of Duty 4 Modern Warfare Remastered", "Raven Software", "FPS", 11, "http://vignette3.wikia.nocookie.net/callofduty/images/e/ec/Cod-mw-remastered-cover_v2.jpeg/revision/latest?cb=20160502190153"));
         games.add(new Game(81, "Wolfenstein The New Order", "MachineGames", "FPS", 12, "https://gamefaqs.akamaized.net/box/2/3/5/396235_front.jpg"));
 
+
+        games2.put(1, new Game(96, "Bioshock", "2K Games", "FPS", 1, "https://vignette3.wikia.nocookie.net/bioshock/images/8/8e/BioShock_box.png/revision/latest?cb=20100425082949"));
+        games2.put(2, new Game(81, "Alien Isolation", "CA Games", "Survival Horror", 2, "http://www.gamedynamo.com/images/games/boxart/high/4513.jpg"));
+        games2.put(3, new Game(85, "PES 2017", "Konami", "Sport", 3, "http://www.mobygames.com/images/covers/l/365348-pes-2017-pro-evolution-soccer-playstation-4-front-cover.jpg"));
+        games2.put(4, new Game(94, "TES V Skyrim", "Bethesda", "RPG", 4, "https://i.ytimg.com/vi/AeGpJgt_KiA/maxresdefault.jpg"));
+        games2.put(5, new Game(93, "The Witcher 3", "CD Projekt RED", "RPG", 5, "http://i.imgur.com/DVZUGpO.jpg"));
+        games2.put(6, new Game(95, "Metal Gear Solid V The Phantom Pain", "Konami", "FPS", 6, "https://static.giantbomb.com/uploads/original/8/86603/2644272-scarf.jpg"));
+        games2.put(7, new Game(86, "Resident Evil 7", "Capcom", "Survival Horror", 7, "http://www.heypoorplayer.com/wp-content/uploads/2017/01/Resident-Evil-7-Art.jpg"));
+        games2.put(8, new Game(90, "NBA 2K17", "2K Games", "Sport", 8, "http://media.operationsports.com/shots/1470398834-media.jpg"));
+        games2.put(9, new Game(85, "Thimbleweed Park", "Terrible Toybox", "Adventure", 9, "http://gamepod.vg/wp-content/uploads/2017/03/ThimbleweedParkCover.jpg"));
+        games2.put(10, new Game(88, "Fallout 4", "Bethesda", "RPG", 10, "https://vignette3.wikia.nocookie.net/fallout/images/e/e9/Fallout_4_box_cover.jpg/revision/latest?cb=20170220211249"));
+        games2.put(11, new Game(89, "Call of Duty 4 Modern Warfare Remastered", "Raven Software", "FPS", 11, "http://vignette3.wikia.nocookie.net/callofduty/images/e/ec/Cod-mw-remastered-cover_v2.jpeg/revision/latest?cb=20160502190153"));
+        games2.put(12, new Game(81, "Wolfenstein The New Order", "MachineGames", "FPS", 12, "https://gamefaqs.akamaized.net/box/2/3/5/396235_front.jpg"));
     }
 
 
@@ -44,32 +59,62 @@ public class GamesController {
     public String viewGames(@QueryParam("search") String genre) throws IOException {
 
         List<Game> gamesFiltered = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+        Map<Integer, Game> filtered = new HashMap<>();
+        int key = 1;
 
         if (genre != null) {
 
+            /**
+             * aqui quiero usar un map directamente y no tener que depender de la List games pero no se como
+             * obtener un elemento del map para poder ver sus values y poder hacer el equals del if de mas abajo
+             */
             for (int i = 0; i < games.size(); i++) {
 
                 Game game = games.get(i);
 
                 if (genre != null && game.getGenre().toLowerCase().equals(genre.toLowerCase())) {
 
-                    gamesFiltered.add(game);
+                    //gamesFiltered.add(game);
+                    filtered.put(key, game);
+                    key++;
                 }
             }
 
-            if (gamesFiltered.size() > 0) {
+            if (filtered.size() > 0) {
 
-                return MustacheUtil.processTemplate("filteredgames.html", gamesFiltered);
+                map.put("pagetitle", "Games found by selected filter");
+                map.put("games", filtered.values());
+                //return MustacheUtil.processTemplate("games.html", gamesFiltered);
+                return MustacheUtil.processTemplate("games.html", map);
 
             } else {
 
-                return MustacheUtil.processTemplate("games.html", games);
+                /*for (int i = 0; i < games.size(); i++) {
+                    Game game = games.get(i);
+                    map.put("title", game);
+                }*/
+
+                map.put("pagetitle", "Recommended games");
+                map.put("games", games2.values());
+
+                return MustacheUtil.processTemplate("games.html", map);
+                //return MustacheUtil.processTemplate("games.html", games);
                 //return "<h1>No games found by " + "'" + genre + "'" + " filter</h1>";
             }
 
         } else {
 
-            return MustacheUtil.processTemplate("games.html", games);
+           /* for (int i = 0; i < games.size(); i++) {
+                Game game = games.get(i);
+                map.put("title", game);
+            }*/
+
+            map.put("pagetitle", "Recommended games");
+            map.put("games", games2.values());
+
+            return MustacheUtil.processTemplate("games.html", map);
+            //return MustacheUtil.processTemplate("games.html", games);
         }
     }
 

@@ -9,7 +9,7 @@ public class Game {
     private int score;
     private int id;
 
-    public Game (int score, String title, String developer, String genre, int id, String portada) {
+    public Game(int score, String title, String developer, String genre, int id, String portada) {
 
         this.title = title;
         this.developer = developer;
@@ -42,4 +42,5 @@ public class Game {
     public int getScore() {
         return score;
     }
+
 }
