@@ -1,4 +1,4 @@
-package com.zarebcn.dropwizardgames;
+package com.zarebcn.dropwizardgames.util;
 
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;

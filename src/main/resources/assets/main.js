@@ -25,6 +25,5 @@ function homeButton () {
     home.onclick = function() {
 
         location.href = '/games';
-
     };
 }

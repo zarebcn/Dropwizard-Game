@@ -5,6 +5,12 @@ a {
     font-size: 18px;
 }
 
+.nogames {
+    font-weight: bolder;
+    color: blue;
+    font-size: 25px;
+}
+
 body {
     display: flex;
     flex-direction: column;

@@ -5,15 +5,22 @@
 <body>
 
 <div class="boton">
-    <button class="home" id="inicio">Home</button>
+    {{#filtro}}
+    <button class="home">Home</button>
+    {{/filtro}}
+    {{^filtro}}
+    {{/filtro}}
     <input placeholder="search..." type="text">
-    <button class="search" id="buscar">Search</button>
+    <button class="search">Search</button>
 </div>
 
 <h1>{{pagetitle}}</h1>
 <ul>
     {{#games}}
     <li><a href='/games/{{id}}'>{{title}}</a></li>
+    {{/games}}
+    {{^games}}
+    <li class="nogames">No games found</li>
     {{/games}}
 </ul>
 

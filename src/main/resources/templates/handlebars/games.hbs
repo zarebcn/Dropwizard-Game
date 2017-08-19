@@ -5,16 +5,24 @@
 <body>
 
 <div class="boton">
+
+    {{#if filtro}}
     <button class="home">Home</button>
+    {{else}}
+    {{/if}}
     <input placeholder="search..." type="text">
     <button class="search">Search</button>
 </div>
 
-<h1 class="pagetitle">Games found by selected filter</h1>
+<h1>{{pagetitle}}</h1>
 <ul>
-    {{#.}}
-    <li><a href='/games/{{id}}'>{{title}}</a></li>
-    {{/.}}
+    {{#if games}}
+        {{#games}}
+        <li><a href='/games/{{id}}'>{{title}}</a></li>
+        {{/games}}
+    {{else}}
+    <li class="nogames">No games found</li>
+    {{/if}}
 </ul>
 
 <script src="/assets/main.js"></script>
