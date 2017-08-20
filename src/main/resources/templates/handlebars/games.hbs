@@ -6,24 +6,24 @@
 
 <div class="boton">
 
-    {{#if filtro}}
+    {{#if mostrarboton}}
     <button class="home">Home</button>
-    {{else}}
     {{/if}}
     <input placeholder="search..." type="text">
     <button class="search">Search</button>
 </div>
 
 <h1>{{pagetitle}}</h1>
+
+{{#if games}}
 <ul>
-    {{#if games}}
-        {{#games}}
+    {{#games}}
         <li><a href='/games/{{id}}'>{{title}}</a></li>
-        {{/games}}
-    {{else}}
-    <li class="nogames">No games found</li>
-    {{/if}}
+    {{/games}}
 </ul>
+    {{else}}
+        <div class="nogames">No games found</div>
+{{/if}}
 
 <script src="/assets/main.js"></script>
 

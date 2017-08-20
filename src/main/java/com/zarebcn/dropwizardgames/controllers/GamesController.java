@@ -65,7 +65,7 @@ public class GamesController {
 
                 map.put("pagetitle", "Games found by selected filter");
                 map.put("games", gamesFiltered);
-                map.put("filtro", "mostrar");
+                map.put("mostrarboton", true);
 
                 return HandlebarsUtil.processTemplate("games", map);
                 //return MustacheUtil.processTemplate("games.html", map);
@@ -73,7 +73,7 @@ public class GamesController {
             } else {
 
                 map.put("pagetitle", "Games found by selected filter");
-                map.put("filtro", "mostrar");
+                map.put("mostrarboton", true);
 
                 return HandlebarsUtil.processTemplate("games", map);
                 //return MustacheUtil.processTemplate("games.html", map);
@@ -104,7 +104,7 @@ public class GamesController {
             map.put("developer", game.getDeveloper());
             map.put("cover", game.getPortada());
             map.put("score", game.getScore());
-            map.put("filtro", "mostrar");
+            //map.put("mostrarboton", true);
 
             return HandlebarsUtil.processTemplate("game", map);
             //return MustacheUtil.processTemplate("game.html", map);
@@ -142,7 +142,7 @@ public class GamesController {
 
             map.put("pagetitle", "Games found by selected filter");
             map.put("games", gamesFiltered);
-            map.put("filtro", "mostrar");
+            map.put("mostrarboton", true);
 
             return HandlebarsUtil.processTemplate("games", map);
             //return MustacheUtil.processTemplate("games.html", map);
@@ -150,7 +150,7 @@ public class GamesController {
         } else {
 
             map.put("pagetitle", "Games found by selected filter");
-            map.put("filtro", "mostrar");
+            map.put("mostrarboton", true);
 
             return HandlebarsUtil.processTemplate("games", map);
             //return MustacheUtil.processTemplate("games.html", map);
