@@ -1,4 +1,3 @@
-
 searchButton();
 homeButton();
 
@@ -6,21 +5,18 @@ homeButton();
 function searchButton() {
 
     var search = document.querySelector(".boton .search");
-    var input = document.querySelector(".boton input");
-
 
     search.onclick = function() {
 
+        var input = document.querySelector(".boton input");
         var filtro = input.value;
-        location.href = '/games?search=' + filtro;
-        document.getElementById("titulo").textContent = "aaaaa";
-    }
+        location.href = '/games?filter=' + filtro;
+    };
 }
 
 function homeButton () {
 
     var home = document.querySelector(".boton .home");
-    var mainPageTitle = document.querySelector(".pagetitle");
 
     home.onclick = function() {
 

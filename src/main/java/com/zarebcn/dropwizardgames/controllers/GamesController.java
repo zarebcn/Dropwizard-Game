@@ -4,7 +4,7 @@ package com.zarebcn.dropwizardgames.controllers;
 import com.zarebcn.dropwizardgames.model.Game;
 //import com.zarebcn.webapputils.util.MustacheUtil;
 import com.zarebcn.dropwizardgames.util.HandlebarsUtil;
-import com.zarebcn.dropwizardgames.util.MustacheUtil;
+//import com.zarebcn.dropwizardgames.util.MustacheUtil;
 
 
 import javax.ws.rs.*;
@@ -40,17 +40,13 @@ public class GamesController {
     }
 
     @GET
-    public String viewGames(@QueryParam("search") String genre) throws IOException {
+    public String viewGames(@QueryParam("filter") String genre) throws IOException {
 
         List<Game> gamesFiltered = new ArrayList<>();
         Map<String, Object> map = new HashMap<>();
 
         if (genre != null) {
 
-            /**
-             * aqui quiero usar un map directamente y no tener que depender de la List games pero no se como
-             * obtener un elemento del map para poder ver sus values y poder hacer el equals del if de mas abajo
-             */
             for (int i = 0; i < games.size(); i++) {
 
                 Game game = games.get(i);
@@ -61,27 +57,15 @@ public class GamesController {
                 }
             }
 
-            if (gamesFiltered.size() > 0) {
+            map.put("pageTitle", "Games found by selected filter");
+            map.put("games", gamesFiltered);
+            map.put("showButton", true);
 
-                map.put("pagetitle", "Games found by selected filter");
-                map.put("games", gamesFiltered);
-                map.put("mostrarboton", true);
-
-                return HandlebarsUtil.processTemplate("games", map);
-                //return MustacheUtil.processTemplate("games.html", map);
-
-            } else {
-
-                map.put("pagetitle", "Games found by selected filter");
-                map.put("mostrarboton", true);
-
-                return HandlebarsUtil.processTemplate("games", map);
-                //return MustacheUtil.processTemplate("games.html", map);
-            }
+            return HandlebarsUtil.processTemplate("games", map);
 
         } else {
 
-            map.put("pagetitle", "Recommended games");
+            map.put("pageTitle", "Recommended games");
             map.put("games", games);
 
             return HandlebarsUtil.processTemplate("games", map);
@@ -93,8 +77,6 @@ public class GamesController {
     @Path("{id}")
     public String viewGame(@PathParam("id") int gameId) throws IOException {
 
-
-
         if (gameId > 0 && gameId <= games.size()) {
 
             Game game = games.get(gameId - 1);
@@ -104,7 +86,6 @@ public class GamesController {
             map.put("developer", game.getDeveloper());
             map.put("cover", game.getPortada());
             map.put("score", game.getScore());
-            //map.put("mostrarboton", true);
 
             return HandlebarsUtil.processTemplate("game", map);
             //return MustacheUtil.processTemplate("game.html", map);
@@ -116,13 +97,13 @@ public class GamesController {
     }
 
     @GET
-    @Path("/search")
+    @Path("/filter")
     public String search() {
         return "<h1>Enter a game genre filter value</h1>";
     }
 
     @GET
-    @Path("/search/{genre}")
+    @Path("/filter/{genre}")
     public String filterByGenre(@PathParam("genre") String genre) throws IOException {
 
         List<Game> gamesFiltered = new ArrayList<>();
@@ -138,22 +119,10 @@ public class GamesController {
             }
         }
 
-        if (gamesFiltered.size() > 0) {
+        map.put("pageTitle", "Games found by selected filter");
+        map.put("games", gamesFiltered);
+        map.put("showButton", true);
 
-            map.put("pagetitle", "Games found by selected filter");
-            map.put("games", gamesFiltered);
-            map.put("mostrarboton", true);
-
-            return HandlebarsUtil.processTemplate("games", map);
-            //return MustacheUtil.processTemplate("games.html", map);
-
-        } else {
-
-            map.put("pagetitle", "Games found by selected filter");
-            map.put("mostrarboton", true);
-
-            return HandlebarsUtil.processTemplate("games", map);
-            //return MustacheUtil.processTemplate("games.html", map);
-        }
+        return HandlebarsUtil.processTemplate("games", map);
     }
 }

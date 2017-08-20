@@ -9,7 +9,7 @@ function searchButton() {
 
         var input = document.querySelector(".boton input");
         var filtro = input.value;
-        location.href = '/games?search=' + filtro;
+        location.href = '/games?filter=' + filtro;
     };
 }
 
@@ -20,5 +20,5 @@ function homeButton () {
     home.onclick = function() {
 
         location.href = '/games';
-    }
+    };
 }
