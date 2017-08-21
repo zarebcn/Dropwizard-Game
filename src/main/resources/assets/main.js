@@ -10,7 +10,9 @@ function searchButton() {
 
         var input = document.querySelector(".boton input");
         var filtro = input.value;
-        location.href = '/games?genre=' + filtro;
+        if (filtro) {
+            location.href = '/games?genre=' + filtro;
+        }
     };
 }
 
