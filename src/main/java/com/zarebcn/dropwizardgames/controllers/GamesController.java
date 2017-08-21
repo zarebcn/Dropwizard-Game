@@ -40,7 +40,7 @@ public class GamesController {
     }
 
     @GET
-    public String viewGames(@QueryParam("filter") String genre) throws IOException {
+    public String viewGames(@QueryParam("genre") String genre) throws IOException {
 
         List<Game> gamesFiltered = new ArrayList<>();
         Map<String, Object> map = new HashMap<>();
@@ -95,13 +95,13 @@ public class GamesController {
     }
 
     @GET
-    @Path("/filter")
+    @Path("/genre")
     public String search() {
         return "<h1>Enter a game genre filter value</h1>";
     }
 
     @GET
-    @Path("/filter/{genre}")
+    @Path("/genre/{genre}")
     public String filterByGenre(@PathParam("genre") String genre) throws IOException {
 
         List<Game> gamesFiltered = new ArrayList<>();
