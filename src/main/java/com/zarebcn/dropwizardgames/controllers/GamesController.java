@@ -47,9 +47,7 @@ public class GamesController {
 
         if (genre != null) {
 
-            for (int i = 0; i < games.size(); i++) {
-
-                Game game = games.get(i);
+            for (Game game : games) {
 
                 if (game.getGenre().toLowerCase().equals(genre.toLowerCase())) {
 
@@ -109,9 +107,7 @@ public class GamesController {
         List<Game> gamesFiltered = new ArrayList<>();
         Map<String, Object> map = new HashMap<>();
 
-        for (int i = 0; i < games.size(); i++) {
-
-            Game game = games.get(i);
+        for (Game game : games) {
 
             if (genre != null && game.getGenre().toLowerCase().equals(genre.toLowerCase())) {
 
