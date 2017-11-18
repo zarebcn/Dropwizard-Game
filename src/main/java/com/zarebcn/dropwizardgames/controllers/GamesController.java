@@ -2,9 +2,9 @@ package com.zarebcn.dropwizardgames.controllers;
 
 
 import com.zarebcn.dropwizardgames.model.Game;
-//import com.zarebcn.webapputils.util.MustacheUtil;
+
 import com.zarebcn.dropwizardgames.util.HandlebarsUtil;
-//import com.zarebcn.dropwizardgames.util.MustacheUtil;
+import com.zarebcn.dropwizardgames.util.MustacheUtil;
 
 
 import javax.ws.rs.*;
