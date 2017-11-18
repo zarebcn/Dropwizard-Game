@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
@@ -18,14 +18,14 @@
 {{#if games}}
 <ul>
     {{#games}}
-        <li><a href='/games/{{id}}'>{{title}}</a></li>
+        <li><a href='/api/games/{{id}}'>{{title}}</a></li>
     {{/games}}
 </ul>
     {{else}}
         <div class="nogames">No games found</div>
 {{/if}}
 
-<script src="/assets/main.js"></script>
+<script src="/main.js"></script>
 
 </body>
 </html>

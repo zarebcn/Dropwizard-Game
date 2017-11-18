@@ -27,7 +27,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                  <mainClass>com.codethen.dropwizard.sample.MyApp</mainClass>
+                  <mainClass>com.zarebcn.dropwizardgames.GamesApplication</mainClass>
                 </transformer>
               </transformers>
             </configuration>

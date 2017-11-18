@@ -11,7 +11,7 @@ function searchButton() {
         var input = document.querySelector(".boton input");
         var filtro = input.value;
         if (filtro) {
-            location.href = '/games?genre=' + filtro;
+            location.href = '/api/games?genre=' + filtro;
         }
     };
 }
@@ -22,6 +22,6 @@ function homeButton () {
 
     home.onclick = function() {
 
-        location.href = '/games';
+        location.href = '/api/games';
     };
 }

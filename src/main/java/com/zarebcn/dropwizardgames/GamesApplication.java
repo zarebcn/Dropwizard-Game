@@ -20,7 +20,7 @@ public class GamesApplication extends Application<GamesConfiguration> {
     @Override
     public void initialize(Bootstrap<GamesConfiguration> bootstrap) {
 
-        bootstrap.addBundle(new AssetsBundle("/assets/", "/assets/"));
+        bootstrap.addBundle(new AssetsBundle("/assets/", "/", "index.html"));
     }
 
     @Override

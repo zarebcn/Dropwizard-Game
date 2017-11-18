@@ -60,6 +60,7 @@ public class GamesController {
             map.put("showButton", true);
 
             return HandlebarsUtil.processTemplate("games", map);
+            //return MustacheUtil.processTemplate("games.html", map);
 
         } else {
 
@@ -120,5 +121,6 @@ public class GamesController {
         map.put("showButton", true);
 
         return HandlebarsUtil.processTemplate("games", map);
+        //return MustacheUtil.processTemplate("games.html", map);
     }
 }
